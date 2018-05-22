@@ -1,0 +1,9 @@
+[
+    {
+        'icon':'mode_edit',
+        'color':'red',
+        'url' :'#/list',
+        'component':'nd-usuarios'
+
+    }
+]

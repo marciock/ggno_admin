@@ -1,0 +1,12 @@
+[
+    {
+        'title':'Login',
+        'url':'#/login',
+        'component':'nd-login'
+    },
+    {
+        'title':'Inicio',
+        'url':'#/home',
+        'component':'nd-app'
+    }
+]

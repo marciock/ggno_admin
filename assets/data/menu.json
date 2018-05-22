@@ -1,0 +1,58 @@
+[
+    {
+        'id':'1',
+        'icon':'http://localhost:3000/assets/icons/usuarios.svg',
+        'title':'Usuários',
+        'url' :'#/usuarios',
+        'component':'nd-usuarios'
+
+    },
+    {
+        'id':'2',
+        'icon':'http://localhost:3000/assets/icons/documentos.svg',
+        'title':'Documentos',
+        'url' :'#/documentos',
+        'component':'nd-documentos'
+
+    },
+    {
+        'id':'3',
+        'icon':'http://localhost:3000/assets/icons/comites.svg',
+        'title':'Comitês',
+        'url' :'#/comites',
+        'component':'nd-comites'
+
+    },
+    {
+        'id':'4',
+        'icon':'http://localhost:3000/assets/icons/indicadores.svg',
+        'title':'Indicadores',
+        'url' :'#/indicadores',
+        'component':'nd-indicadores'
+
+    },
+    {
+        'id':'5',
+        'icon':'http://localhost:3000/assets/icons/noticias.svg',
+        'title':'Noticias',
+        'url' :'#/noticias',
+        'component':'nd-noticias'
+
+    },
+    {
+        'id':'6',
+        'icon':'http://localhost:3000/assets/icons/agendas.svg',
+        'title':'Agendas',
+        'url' :'#/agendas',
+        'component':'nd-agendas'
+
+    },
+    {
+        'id':'7',
+        'icon':'http://localhost:3000/assets/icons/ideias.svg',
+        'title':'Ideias',
+        'url' :'#/ideias',
+        'component':'nd-ideias'
+
+    }
+]
