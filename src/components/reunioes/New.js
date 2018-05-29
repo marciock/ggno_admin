@@ -16,35 +16,43 @@ class New extends Component {
     super();
     
 
-    this.local=[
-      {
-        'value':'1',
-        'title':'Paranavai'
-      },
-      {
-        'value':'2',
-        'title':'Umuarama'
-      },
-      {
-        'value':'3',
-        'title':'Maringá'
-      },
-      {
-        'value':'4',
-        'title':'Cianorte'
-      },
-      {
-        'value':'5',
-        'title':'Campo Mourão'
-      }
-     
-    ]
+    
     this.handleChange=this.handleChange.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
   }
   state={
-    author:{assunto:'',local:'',data:'',inicio:'',termino:'',descricao:'',participantes:''}
+    author:{assunto:'',local:'',data:'',inicio:'',termino:'',descricao:'',participantes:''},
+    local:[],
+    comites:[]
   }
+  componentDidMount(){
+    this.getComites();
+    this.getLocal();
+  
+}
+getLocal(){
+  axios.get('http://localhost/ggnomotor/modules/local/services/Lista.php',{
+      headers:{'Acces-Control-Allow-Origin':'*','Content-Type':'application/json'},
+      responseType:'json',
+    }).then(res=>{
+
+        console.log(res.data)
+      this.setState({local:res.data});
+        
+    });
+}
+getComites(){
+  axios.get('http://localhost/ggnomotor/modules/comites/services/Lista.php',{
+      headers:{'Acces-Control-Allow-Origin':'*','Content-Type':'application/json'},
+      responseType:'json',
+    }).then(res=>{
+
+        console.log(res.data)
+      this.setState({comites:res.data});
+        
+    });
+}
+ 
   handleChange=event=>{
  
     let field=event.target.name;
@@ -60,7 +68,7 @@ class New extends Component {
     
       const data=this.state.author;
     //  console.log(data.data);
-  axios.post('http://localhost/ggnomotor/modules/reunioes/services/Insert.php',data).then(res=>{
+  axios.post('http://localhost/ggnomotor/modules/reunioes_comites/services/Insert.php',data).then(res=>{
       console.log(res);
       console.log(res.data);
       
@@ -83,10 +91,17 @@ class New extends Component {
               <Input  s={12} label="Assunto" name="assunto" id="assunto" onChange={this.handleChange}/>
               <Input type="textarea" s={12} label="Descrição"  name="descricao" id="descricao" onChange={this.handleChange}/>
               
+              <Input type="select" label="Comitê" name="comite" id="comite" className="browser-default" s={12} onChange={this.handleChange}>
+                {
+                  this.state.comites.map((f,i)=>{
+                    return <option key={i} value={f.id_comite} >{f.comite}</option>
+                  })
+                }
+              </Input>
               <Input type="select" label="Local" name="local" id="local" className="browser-default" s={12} onChange={this.handleChange}>
                 {
-                  this.local.map((f,i)=>{
-                    return <option key={f.value} value={f.value} >{f.title}</option>
+                  this.state.local.map((f,i)=>{
+                    return <option key={i} value={f.id_local} >{f.cidade}</option>
                   })
                 }
               </Input>
@@ -101,7 +116,7 @@ class New extends Component {
                    <lable for="termino" >Término </lable>
                    <input type="time" s={6} className="input-field" name="termino" id="termino" onChange={this.handleChange} />
               </div>
-             
+              
                <Input type="textarea" s={12} label="Participantes" name="particiantes" id="participantes" onChange={this.handleChange}/>
             
                 

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+
 import {Input,Row} from 'react-materialize';
+
 //import NavBar from '../tools/NavBar';
 import FabPost from '../tools/FabPost';
 import '../tools/Icons.css';
@@ -18,71 +20,43 @@ class New extends Component {
     
    
 
-    this.setores=[
-      {
-        'value':'1',
-        'title':'Planejamento'
-      },
-      {
-        'value':'2',
-        'title':'Clientes'
-      },
-      {
-        'value':'3',
-        'title':'Gerência'
-      },
-      {
-        'value':'4',
-        'title':'Redes'
-      },
-      {
-        'value':'5',
-        'title':'Industrial'
-      }
-     
-    ]
-    this.tipoAquivo=[
-      {
-        'id':'1',
-        'title':'Microsoft Word',
-        'value':'doc'
-      },
-      {
-        'id':'2',
-        'title':'LibreOffice Write',
-        'value':'odt'
-      },
-      {
-        'id':'3',
-        'title':'Microsoft Excel',
-        'value':'xls'
-      },
-      {
-        'id':'4',
-        'title':'LibreOffice Calc',
-        'value':'ods'
-      },
-      {
-        'id':'5',
-        'title':'PDF',
-        'value':'pdf'
-      },
-      {
-        'id':'6',
-        'title':'Imagem',
-        'value':'jpg'
-      },
-      {
-        'id':'7',
-        'title':'Microsoft PowerPoint',
-        'value':'ppt'
-      },
-
-     
-    ]
+   
    // this.handleChange=this.handleChange.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
     
+  }
+  state={
+    setores:[],
+    tipos:[]
+  }
+  componentDidMount(){
+     this.getSetores();
+     this.getTipo();
+   
+
+    
+  }
+  getSetores(){
+    axios.get('http://localhost/ggnomotor/modules/setor/services/Lista.php',{
+      headers:{'Acces-Control-Allow-Origin':'*','Content-Type':'application/json'},
+      responseType:'json',
+    }).then(res=>{
+
+        console.log(res.data)
+      this.setState({setores:res.data});
+        
+    });
+  }
+  getTipo(){
+    axios.get('http://localhost/ggnomotor/modules/tipo/services/Lista.php',{
+      headers:{'Acces-Control-Allow-Origin':'*','Content-Type':'application/json'},
+      responseType:'json',
+    }).then(res=>{
+
+        console.log(res.data)
+      this.setState({tipos:res.data});
+        
+    });
   }
   
   
@@ -141,16 +115,16 @@ class New extends Component {
               <Input placeholder="" s={12} label="Titulo do Documento"  name="titulo" id="titulo"/>
               <Input type="select" label="Tipo de arquivos" name="tipo" id="tipo" className="browser-default" s={12}>
                 {
-                  this.tipoAquivo.map((f,i)=>{
-                    return <option key={f.value} value={f.value} >{f.title}</option>
+                  this.state.tipos.map((f,i)=>{
+                    return <option key={i} value={f.pasta} >{f.tipo}</option>
                   })
                 }
               </Input>
               
               <Input type="select" label="Setor" name="setor" id="setor" className="browser-default" s={12}>
                 {
-                  this.setores.map((f,i)=>{
-                    return <option key={f.value} value={f.value} >{f.title}</option>
+                  this.state.setores.map((f,i)=>{
+                    return <option key={i} value={f.id_setor} >{f.setor}</option>
                   })
                 }
               </Input>

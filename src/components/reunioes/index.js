@@ -15,7 +15,7 @@ class Reunioes extends Component {
     reunioes:[]
   }
   componentDidMount(){
-    axios.get('http://localhost/ggnomotor/modules/reunioes/services/Lista.php',{
+    axios.get('http://localhost/ggnomotor/modules/reunioes_comites/services/Lista.php',{
       headers:{'Acces-Control-Allow-Origin':'*','Content-Type':'application/json'},
       responseType:'json',
     }).then(res=>{

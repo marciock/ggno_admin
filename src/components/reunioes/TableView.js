@@ -5,34 +5,8 @@ class TableView extends Component {
 
   constructor(){
     super();
-    this.data=[
-      { 'id':'1',
-        'local':'Maringa'
-      },
-      { 'id':'2',
-      'local':'Campo Mourão'
-       },
-       { 'id':'3',
-       'local':'Paranavaí'
-     },
-     { 'id':'4',
-     'local':'Umuarama'
-   },
-    ]
+    
   }
-  buscaLocal(local){
-
-    this.data.map((f)=>{
-      if(local===f.id){
-          return f.local;
-      }
-    })
-
-  }
-     
-   
-        
-
   render() {
     
     
@@ -55,10 +29,10 @@ class TableView extends Component {
              { 
                this.props.data.map((f,i)=>{
                return ( <tr key={i}>
-                <td><Input name='grop' type='radio' s={12} value={f.id_reunioes} label="" /></td>
+                <td><Input name='grop' type='radio' s={12} value={f.id_reunioescomites} label="" /></td>
                 <td>{f.data}</td>
                 <td>{f.assunto}</td>
-                <td>{this.buscaLocal(f.id_local)}</td>
+                <td>{f.cidade}</td>
                 <td>{f.hora_inicial}</td>
                 <td>{f.hora_final}</td>
               </tr>)
