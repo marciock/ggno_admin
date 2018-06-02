@@ -21,7 +21,7 @@ class New extends Component {
     this.handleSubmit=this.handleSubmit.bind(this);
   }
   state={
-    author:{assunto:'',local:'',data:'',inicio:'',termino:'',descricao:'',participantes:''},
+    author:{assunto:'',comite:'',local:'',data:'',inicio:'',termino:'',descricao:'',participantes:''},
     local:[],
     comites:[]
   }
@@ -68,7 +68,7 @@ getComites(){
     
       const data=this.state.author;
     //  console.log(data.data);
-  axios.post('http://localhost/ggnomotor/modules/reunioes_comites/services/Insert.php',data).then(res=>{
+  axios.post('http://localhost/ggnomotor/modules/reunioes/services/Insert.php',data).then(res=>{
       console.log(res);
       console.log(res.data);
       

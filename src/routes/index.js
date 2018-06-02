@@ -17,6 +17,7 @@ import Reunioes from '../components/reunioes';
 
 
 
+
 import AgendasNew from '../components/agendas/New';
 import ComitesNew from '../components/comites/New';
 import DocumentosNew from '../components/documentos/New';
@@ -42,6 +43,7 @@ export default ()=> (
                 <Route exact path='/noticias' component={Noticias} />
                 <Route exact path='/usuarios' component={Usuarios} />
                 <Route exact path='/reunioes' component={Reunioes} />
+                
               
 
                 <Route exact path='/agendas/new' component={AgendasNew} />
