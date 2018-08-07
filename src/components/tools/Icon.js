@@ -85,7 +85,7 @@ class Icon extends Component {
        <div className="row ">
             {
                 this.data.map((el,index)=>{
-                    console.log(el.icon)
+                   // console.log(el.icon)
                     return <div className="col s3" key={index}><Link to={el.url}><div className="center"><img src={el.icon} alt="testando imagem"/><p className="icon-p">{el.title}</p></div></Link></div>;
                 })
             }
